@@ -144,13 +144,15 @@
                             <h3 class="text-xl font-bold text-[#12132D]">Title</h3>
                             <p> <span class="text-green-400"> &#x2714 &#x2714</span> Mark as read (<span>0</span>)</p>
                         </div>
-                        <div class="bg-white flex justify-between items-center rounded-xl p-5 ">
-                            <div>
-                                <h1 class="text-sm lg:text-xl">10 Kids Unaware of Their Halloween Costume</h1>
-                            </div>
-                            <div class="flex gap-3 ">
-                                <img class="h-6" src="./images/eye.png" alt="">
-                                <p>1500</p>
+                        <div id="show-title-container">
+                            <div class="bg-white flex justify-between items-center rounded-xl p-5 ">
+                                <div>
+                                    <h1 id="show-title" class="text-sm lg:text-xl">10 Kids Unaware of Their Halloween Costume</h1>
+                                </div>
+                                <div class="flex gap-3 ">
+                                    <img class="h-6" src="./images/eye.png" alt="">
+                                    <p>1500</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -187,8 +189,8 @@
                 </p>
             </div>
             <!-- latest posts card container -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 justify-center items-center gap-5 lg:gap-10 mt-10 lg:mt-20">
-                <div class="border-2 p-5 lg:p-10 rounded-2xl space-y-5">
+            <div id="latest-post-container" class="grid grid-cols-1 lg:grid-cols-3 justify-center items-center gap-5 lg:gap-10 mt-10 lg:mt-20">
+                <!-- <div class="border-2 p-5 lg:p-10 rounded-2xl space-y-5">
                     <div class="bg-[#12132D15] w-full min-h-32 shadow-sm rounded-xl"></div>
                     <div>
                         <div class="flex justify-start items-center gap-4">
@@ -211,7 +213,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
     </main>
