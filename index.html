@@ -33,10 +33,10 @@
                 </div>
                 <div
                     class="flex items-center gap-2 lg:gap-5 *:rounded-full *:p-1 *:bg-[#12132D08] *:hover:cursor-pointer">
-                    <img src="./images/home.png" alt="">
-                    <img src="./images/tootip.png" alt="">
-                    <img src="./images/user.png" alt="">
-                    <img src="./images/flag.png" alt="">
+                    <img src="./images/home.png" alt="" title="Home">
+                    <img src="./images/tootip.png" alt="" title="Tooltip">
+                    <img src="./images/user.png" alt="" title="User">
+                    <img src="./images/flag.png" alt="" title="Flag">
                     <div>
                         <button class="bg-[#797DFC] px-2 lg:px-5 py-1 lg:py-2 rounded-full text-white font-bold">Sign
                             In</button>
@@ -56,10 +56,10 @@
                         <!-- search field -->
                         <div>
                             <div class="flex items-center relative">
-                                <input class="w-full py-4 rounded-3xl px-5 text-black text-xl" type="text"
+                                <input id="search-field" class="w-full py-4 rounded-3xl px-5 text-black text-xl" type="text"
                                     placeholder="Search here anything">
                                 <button
-                                    class="bg-[#797DFC] px-2 lg:px-5 py-1 lg:py-2 rounded-full text-white font-bold absolute right-5">Search</button>
+                                    id="search-btn" onclick="search()" class="bg-[#797DFC] px-2 lg:px-5 py-1 lg:py-2 rounded-full text-white font-bold absolute right-5">Search</button>
                             </div>
                         </div>
                     </div>
