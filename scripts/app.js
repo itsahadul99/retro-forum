@@ -1,4 +1,4 @@
-
+const showTitleContainer = document.getElementById('show-title-container');
 const postContainer = document.getElementById('post-container');
 const showTitle = document.getElementById('show-title');
 const loadAllPost = async () => {
@@ -42,7 +42,7 @@ const displayPost = (posts) => {
                         </div>
                     </div>
                     <div>
-                        <button><img src="./images/email.png" alt=""></button>
+                        <button onclick="readButtonHandler('${post.id}')"><img src="./images/email.png" alt=""></button>
                     </div>
                 </div>
             </div>
@@ -52,6 +52,38 @@ const displayPost = (posts) => {
         postContainer.appendChild(postDiv);
         setTimeout(spinner(false), 2000)
     });
+}
+let count = 0;
+const readButtonHandler = (id) => {
+    const showCount = document.getElementById('read-count');
+    count++;
+    showCount.innerHTML = count;
+    // console.log(id);
+    showTitleHandler(id)
+}
+const showTitleHandler = async (id) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`);
+    const data = await res.json();
+    // console.log(data.posts);
+    const posts = data.posts;
+    posts.map((post) => {
+        if (id === `${post.id}`) {
+            const div = document.createElement('div');
+            div.className = `bg-white flex justify-between items-center rounded-xl p-5 `;
+            div.innerHTML = `
+            <div>
+                <h1 id="show-title" class="text-sm lg:text-xl">${post.title}</h1>
+            </div>
+            <div class="flex gap-3 ">
+                <img class="h-6" src="./images/eye.png" alt="">
+                <p>${post.view_count}</p>
+            </div>
+            
+            `
+            showTitleContainer.appendChild(div);
+        }
+    })
+
 }
 const latestPostContainer = document.getElementById('latest-post-container');
 const loadLatestPost = async () => {
