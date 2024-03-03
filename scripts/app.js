@@ -50,6 +50,7 @@ const displayPost = (posts) =>{
         
         `
         postContainer.appendChild(postDiv);
+        setTimeout(spinner(false),2000)
     });
 }
 const latestPostContainer = document.getElementById('latest-post-container');
@@ -91,7 +92,6 @@ const loadLatestPost = async () => {
 }
 
 const postSearchByQuery = async(categoryName) =>{
-    postContainer.innerHTML = '';
     const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${categoryName}`);
     const data = await res.json();
     const posts = data.posts;
@@ -100,10 +100,26 @@ const postSearchByQuery = async(categoryName) =>{
 }
 
 const search = () =>{
+    postContainer.innerHTML = '';
+    spinner(true)
+    setTimeout(()=>{
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     // console.log(searchField.value);
     postSearchByQuery(searchText);
+
+    },2000)
+    
+}
+
+// spinner handler 
+const spinner = (isSpinner) => {
+    const spinnerContainer = document.getElementById('spinner-container');
+    if(isSpinner){
+        spinnerContainer.classList.remove('hidden')
+    }else{
+        spinnerContainer.classList.add('hidden');
+    }
 }
 
 
