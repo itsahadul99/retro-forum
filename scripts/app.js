@@ -8,7 +8,7 @@ const loadAllPost = async () => {
     const posts = data.posts;
     displayPost(posts)
 }
-const displayPost = (posts) =>{
+const displayPost = (posts) => {
     posts.forEach(post => {
         // console.log(post);
         const postDiv = document.createElement('div');
@@ -17,7 +17,7 @@ const displayPost = (posts) =>{
         <div class="flex flex-col lg:flex-row items-start gap-5 lg:gap-10 bg-[#7D7DFC1A] p-5 lg:p-10 rounded-lg ">
             <div class="bg-white relative rounded-lg flex flex-col justify-center items-center">
                 <img class ="w-16 rounded-xl" src="${post.image}" alt="">
-                <div class="absolute bg-green-400 rounded-full w-3 h-3 -top-1 -right-1"></div>
+                <div id="active-status" class="absolute ${post.isActive ? "bg-[#10B981]" : "bg-[#FF3434]"} rounded-full w-3 h-3 -top-1 -right-1"></div>
             </div>
             <div>
                 <div class="flex gap-5 font-medium text-sm mb-3">
@@ -50,7 +50,7 @@ const displayPost = (posts) =>{
         
         `
         postContainer.appendChild(postDiv);
-        setTimeout(spinner(false),2000)
+        setTimeout(spinner(false), 2000)
     });
 }
 const latestPostContainer = document.getElementById('latest-post-container');
@@ -69,7 +69,7 @@ const loadLatestPost = async () => {
             <div>
                 <div class="flex justify-start items-center gap-4">
                     <img src="./images/date.png" alt="">
-                    <p class="text-[#12132D99] text-sm">${post.author.posted_date?post.author.posted_date:"No publish date"}</p>
+                    <p class="text-[#12132D99] text-sm">${post.author.posted_date ? post.author.posted_date : "No publish date"}</p>
                 </div>
                 <div>
                     <h1 class="text-black font-bold text-xl">${post.title}</h1>
@@ -81,7 +81,7 @@ const loadLatestPost = async () => {
                     </div>
                     <div>
                         <h1 class="font-bold text-[#12132D]">${post.author.name}</h1>
-                        <p class="text-[#12132D99] text-sm">${post.author.designation?post.author.designation:"unknown"}</p>
+                        <p class="text-[#12132D99] text-sm">${post.author.designation ? post.author.designation : "unknown"}</p>
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@ const loadLatestPost = async () => {
     })
 }
 
-const postSearchByQuery = async(categoryName) =>{
+const postSearchByQuery = async (categoryName) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${categoryName}`);
     const data = await res.json();
     const posts = data.posts;
@@ -99,25 +99,25 @@ const postSearchByQuery = async(categoryName) =>{
     displayPost(posts);
 }
 
-const search = () =>{
+const search = () => {
     postContainer.innerHTML = '';
     spinner(true)
-    setTimeout(()=>{
-    const searchField = document.getElementById('search-field');
-    const searchText = searchField.value;
-    // console.log(searchField.value);
-    postSearchByQuery(searchText);
+    setTimeout(() => {
+        const searchField = document.getElementById('search-field');
+        const searchText = searchField.value;
+        // console.log(searchField.value);
+        postSearchByQuery(searchText);
 
-    },2000)
-    
+    }, 2000)
+
 }
 
 // spinner handler 
 const spinner = (isSpinner) => {
     const spinnerContainer = document.getElementById('spinner-container');
-    if(isSpinner){
+    if (isSpinner) {
         spinnerContainer.classList.remove('hidden')
-    }else{
+    } else {
         spinnerContainer.classList.add('hidden');
     }
 }
